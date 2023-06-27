@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: monospace;
+    background-color: cornsilk;
+    color: saddlebrown;
+  }
+  
+  main {
+    width: 1024px;
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: 350px 350px 350px;
+    grid-template-rows: 5rem 5rem 20rem;;
+  }
+  
+  #siteLogo {
+    width: 250px;
+    z-index: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-row-end: 3;
+  }
+  
+  h1 {
+    font-size: 5rem;
+    z-index: 1;
+    color: rosybrown;
+    line-height: 0.8;
+    display: flex;
+    justify-content: center;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+  
+  p {
+    font-size: 2rem;
+    color: chocolate;
+    display: flex;
+    justify-content: center;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+  }
+  
+  section {
+    background-color: rgb(211, 187, 176, 0.3);
+    grid-row-start: 3;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    display: flex;
+    justify-content: space-between;
+    align-items:center
+  }
+  
+  section img {
+    width: 300px;
+    height: 300px;
+    border: 5px solid transparent;
+  }
+  
+  section img:hover {
+    border: 5px solid rosybrown;
+    cursor: pointer;
+  }
+  
+  section.no-voting img:hover {
+    border: 5px solid transparent;
+    pointer-events: none;
+  }
+  
+  section + div {
+    background-color: darkgrey;
+    color: lightgrey;
+    padding: 0.5rem 1rem;
+    width: max-content;
+    height: max-content;
+    font-size: 0.8rem;
+    margin: 1rem;
+    pointer-events: none;
+  }
+  
+  section + div.clicks-allowed {
+    background-color: rosybrown;
+    color: white;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+  
+  section + div.clicks-allowed:hover {
+    background-color: rgb(211, 187, 175);
+  }
+  
+  ul {
+    margin: 1rem 0;
+  }
+  
+  li {
+    line-height: 1.6;
+  }
+  
+  canvas {
+    width: 75%;
+    height: 500px;
+  }
