@@ -1,7 +1,7 @@
 "use strict"
 
 const pContainer = document.querySelector("section");
-const resultButton = document.querySelector("section");
+const resultButton = document.querySelector("section + div");
 const image1 = document.querySelector("section img:first-child");
 const image2 = document.querySelector("section img:nth-child(2)");
 const image3 = document.querySelector("section img:nth-child(3)");
@@ -51,27 +51,42 @@ function renderProducts() {
 console.log(image1)
 console.log(image2)
 console.log(image3)
+
 function handlePClick(event) {
   if (event.target === pContainer) {
-    alert("Please click on a product");
-  } else {
-    clicks++;
-    console.log(clicks);
-    let clickedProduct = event.target.alt;
-    for (let i = 0; i < pList.length; i++) {
-      if (clickedProduct === pList[i].name) {
-        pList[i].clicks++;
-        break;
-      }
+        alert("Please click on a product");
+    } else {
+        clicks++;
+        console.log(clicks);
+        let clickedProduct = event.target.alt;
+        for (let i = 0; i < pList.length; i++) {
+            if (clickedProduct === pList[i].name) {
+                pList[i].clicks++;
+                break;
+            }
+        }
+        if (clicks === maxClicks) {
+            pContainer.removeEventListener("click", handlePClick);
+            pContainer.className = "no-voting";
+            resultButton.addEventListener("click", renderResults);
+            resultButton.className = "clicks-allowed";
+        } 
+        else {
+            renderProducts();
+        }
     }
-  }
-
-  if (clicks === maxClicks) {
-    pContainer.removeEventListener("click", handlePClick);
-  } else {
-    renderProducts();
-  }
 }
+  
+function renderResults() {
+        let ul = document.querySelector("ul");
+        for (let i = 0; i < pList.length; i++) {
+            let li = document.createElement("li");
+            li.textContent = `${pList[i].name} had ${pList[i].views} views and was clicked ${pList[i].clicks} times.`;
+             ul.appendChild(li);
+        }
+    }
+
+
 
 const bag = new Product("bag", "assets/bag.jpg")
 const banana = new Product("banana", "assets/banana.jpg")
